@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --primary: #4361ee;
+    --primary-light: #ebf0ff;
+    --text-dark: #2b2d42;
+    --text-medium: #4a5568;
+    --border: #eaeaea;
+}
+
+/* ===== CARD STYLES ===== */
+.paniers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.panier-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.panier-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.panier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.panier-header h3 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.panier-header .price {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.panier-body {
+    color: var(--text-medium);
+}
+
+.panier-body p {
+    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.panier-body i {
+    color: var(--primary);
+    width: 1rem;
+    text-align: center;
+}
+
+.voir-details {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    padding: 0.7rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.voir-details:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5vh auto;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+#modalTitle {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.modal-info p {
+    font-size: 1rem;
+    color: var(--text-medium);
+    margin-bottom: 0.8rem;
+    display: flex;
+}
+
+.modal-info strong {
+    font-weight: 500;
+    color: var(--text-dark);
+    min-width: 140px;
+    display: inline-block;
+}
+
+#modalProduits {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: var(--text-dark);
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .paniers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .modal-info p {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .modal-info strong {
+        min-width: auto;
+    }
+}

@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --primary: #4361ee;
+    --primary-light: #ebf0ff;
+    --text-dark: #2b2d42;
+    --text-medium: #4a5568;
+    --text-light: #718096;
+    --border: #eaeaea;
+    --background: #ffffff;
+}
+
+/* ===== FOOTER BASE STYLES ===== */
+.footer {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    position: relative;
+    /* Positionnement en bas de page */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+/* ===== DECORATIVE ELEMENT ===== */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), rgba(67, 97, 238, 0.3));
+    border-radius: 2px;
+}
+
+/* ===== TEXT STYLING ===== */
+.footer p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+}
+
+/* ===== YEAR ANIMATION ===== */
+#current-year {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 0 0.3rem;
+    border-radius: 4px;
+}
+
+#current-year:hover {
+    color: var(--primary);
+    background-color: var(--primary-light);
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .footer::before {
+        width: 80px;
+        height: 3px;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== MAIN CONTENT ADJUSTMENT ===== */
+/* Ajoutez ceci à votre CSS global pour éviter que le contenu ne soit caché sous le footer */
+body {
+    padding-bottom: 80px; /* Ajustez cette valeur en fonction de la hauteur de votre footer */
+}
