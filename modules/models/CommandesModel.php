@@ -2,18 +2,18 @@
 
 namespace modules\models;
 
+require_once __DIR__ . '/ClassObject/Commandes.php';
 require_once __DIR__ . '/../../_assets/includes/Database.php';
-require_once __DIR__ . '/ClassObject/Paniers.php';
 
-use modules\models\ClassObject\Paniers;
+use modules\models\ClassObject\Commandes;
 use _assets\includes\Database;
 
 /**
- * Class PaniersModel
+ * Class CommandesModel
  *
- * Modèle pour gérer les paniers.
+ * Modèle pour gérer les commandes.
  */
-class PaniersModel {
+class CommandesModel {
 
     /**
      * @var \PDO
@@ -21,7 +21,7 @@ class PaniersModel {
     private $pdo;
 
     /**
-     * PaniersModel constructor.
+     * CommandesModel constructor.
      */
     public function __construct()
     {

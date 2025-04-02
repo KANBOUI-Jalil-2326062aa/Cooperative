@@ -1,27 +1,25 @@
 <?php
-
 namespace modules\models;
 
+require_once __DIR__ . '/ClassObject/Produits.php';
 require_once __DIR__ . '/../../_assets/includes/Database.php';
-require_once __DIR__ . '/ClassObject/Paniers.php';
 
-use modules\models\ClassObject\Paniers;
+use modules\models\ClassObject\Produits;
 use _assets\includes\Database;
 
 /**
- * Class PaniersModel
+ * Class ProduitsModel
  *
- * Modèle pour gérer les paniers.
+ * Modèle pour gérer les produits.
  */
-class PaniersModel {
-
+class ProduitsModel {
     /**
      * @var \PDO
      */
     private $pdo;
 
     /**
-     * PaniersModel constructor.
+     * ProduitsModel constructor.
      */
     public function __construct()
     {

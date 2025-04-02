@@ -1,48 +1,385 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 :root {
     --primary: #4361ee;
-    --text-dark: #2b2d42;
-    --text-medium: #4a5568;
-    --text-light: #718096;
-    --background: #ffffff;
-    --border: #eaeaea;
+    --primary-light: #e0e7ff;
+    --error: #ef4444;
+    --error-light: #fee2e2;
+    --success: #10b981;
+    --text-dark: #1e293b;
+    --text-medium: #475569;
+    --text-light: #64748b;
+    --background-light: #f8fafc;
+    --border-radius: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
 }
 
-/* ===== PAGE STRUCTURE ===== */
-.commandes-container {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f1f5f9;
+    color: var(--text-medium);
+}
+
+.commandes-container {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
-/* ===== TYPOGRAPHY ===== */
-.commandes-container h1 {
+h1 {
     font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     color: var(--text-dark);
-    margin-bottom: 1rem;
     text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
 
-.commandes-container .subtitle {
-    font-weight: 400;
+h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+.subtitle {
     font-size: 1.1rem;
     color: var(--text-light);
     text-align: center;
-    margin-bottom: 3rem;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    margin: 0 auto 2.5rem;
+}
+
+#loading-spinner {
+    display: none;
+    width: 60px;
+    height: 60px;
+    margin: 3rem auto;
+    border: 5px solid var(--primary-light);
+    border-top: 5px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    display: none;
+    background: white;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--error);
+    text-align: center;
+}
+
+.error-message p {
+    color: var(--error);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.error-message .retry-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--error);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 0.5rem;
+}
+
+.error-message .retry-button:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
 }
 
 .no-commandes {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
     text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.no-commandes i {
+    font-size: 2.5rem;
     color: var(--text-light);
-    padding: 3rem;
-    background-color: #f8fafc;
-    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.no-commandes p {
     font-size: 1.1rem;
+    color: var(--text-medium);
+}
+
+.commandes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.commande-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.commande-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.commande-header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.commande-header h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin: 0;
+}
+
+.commande-date {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.commande-body {
+    margin: 1rem 0;
+}
+
+.commande-body p {
+    margin: 0.5rem 0;
+    color: var(--text-medium);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.commande-body i {
+    color: var(--primary);
+    width: 1.25rem;
+    text-align: center;
+}
+
+.commande-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.print-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.print-btn:hover {
+    background-color: #3a56d4;
+    transform: translateY(-1px);
+}
+
+.print-btn i {
+    font-size: 0.9rem;
+}
+
+#print-template {
+    display: none;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .print-content {
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 2rem;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .print-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .print-header h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .print-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        color: var(--text-medium);
+    }
+
+    .print-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .print-section h3 {
+        color: var(--text-dark);
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    #print-products {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+
+    #print-products th {
+        background-color: var(--primary-light);
+        color: var(--text-dark);
+        padding: 0.75rem;
+        text-align: left;
+    }
+
+    #print-products td {
+        padding: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .print-total {
+        text-align: right;
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    .print-footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: var(--text-light);
+        font-style: italic;
+    }
+}
+
+@media (max-width: 768px) {
+    .commandes-container {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .commandes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.print-btn {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.print-btn:hover {
+    background-color: #3a56d4;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.print-btn i {
+    font-size: 14px;
+}
+
+.commande-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.print-btn {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.print-btn:hover {
+    background-color: #3a56d4;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.print-btn i {
+    font-size: 14px;
 }

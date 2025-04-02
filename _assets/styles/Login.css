@@ -86,13 +86,11 @@
     transform: translateY(0);
 }
 
-/* Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
 @media (max-width: 480px) {
     .login-container {
         padding: 1.8rem;

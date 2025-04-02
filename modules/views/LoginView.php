@@ -2,7 +2,17 @@
 
 namespace modules\views;
 
+/**
+ * Class LoginView
+ *
+ * Vue pour afficher la page de connexion.
+ */
 class LoginView {
+    /**
+     * Affiche la vue de la page de connexion.
+     *
+     * @return void
+     */
     public function show(){
         echo '<link rel="stylesheet" href="/_assets/styles/Login.css">';
         echo '<div class="login-container">';

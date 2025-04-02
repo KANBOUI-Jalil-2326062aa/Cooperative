@@ -31,14 +31,12 @@ body {
     color: var(--text-medium);
 }
 
-/* Conteneur principal */
 main.paniers-container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
 
-/* Titres */
 h1 {
     font-weight: 600;
     font-size: 2.25rem;
@@ -67,7 +65,6 @@ h1::after {
     margin: 0 auto 2.5rem;
 }
 
-/* État de chargement */
 #loading-spinner {
     display: none;
     width: 60px;
@@ -84,7 +81,6 @@ h1::after {
     100% { transform: rotate(360deg); }
 }
 
-/* Messages d'erreur */
 .error-message {
     display: none;
     background: white;
@@ -122,7 +118,6 @@ h1::after {
     transform: translateY(-1px);
 }
 
-/* Aucun panier disponible */
 .no-paniers {
     background: white;
     padding: 2.5rem;
@@ -144,7 +139,6 @@ h1::after {
     color: var(--text-medium);
 }
 
-/* Grille de paniers */
 .paniers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -152,7 +146,6 @@ h1::after {
     margin: 2rem 0;
 }
 
-/* Carte de panier */
 .panier-card {
     background: white;
     border-radius: var(--border-radius);
@@ -233,12 +226,9 @@ h1::after {
     background: #3a56d4;
 }
 
-/* Modal */
 .modal {
-    /* Vos styles existants pour le modal */
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     main.paniers-container {
         padding: 0 1rem;

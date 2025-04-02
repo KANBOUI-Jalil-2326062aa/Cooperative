@@ -2,12 +2,22 @@
 
 namespace modules\controllers;
 
-require __DIR__ . '/../views/CommandeView.php';
+require __DIR__ . '/../views/CommandesView.php';
 
-use modules\views\CommandeView;
+use modules\views\CommandesView;
 
+/**
+ * Class CommandeController
+ *
+ * Contrôleur pour gérer les commandes.
+ */
 class CommandeController {
+    /**
+     * Exécute l'affichage des commandes.
+     *
+     * @return void
+     */
     public function execute() {
-        (new CommandeView())->show();
+        (new CommandesView())->show();
     }
 }

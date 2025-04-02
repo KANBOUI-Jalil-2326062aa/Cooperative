@@ -10,7 +10,6 @@
     --background: #ffffff;
 }
 
-/* ===== FOOTER BASE STYLES ===== */
 .footer {
     font-family: 'Poppins', sans-serif;
     background: var(--background);
@@ -18,7 +17,6 @@
     text-align: center;
     border-top: 1px solid var(--border);
     position: relative;
-    /* Positionnement en bas de page */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -26,7 +24,6 @@
     z-index: 100;
 }
 
-/* ===== DECORATIVE ELEMENT ===== */
 .footer::before {
     content: '';
     position: absolute;
@@ -39,7 +36,6 @@
     border-radius: 2px;
 }
 
-/* ===== TEXT STYLING ===== */
 .footer p {
     color: var(--text-medium);
     font-size: 0.95rem;
@@ -49,7 +45,6 @@
     letter-spacing: 0.2px;
 }
 
-/* ===== YEAR ANIMATION ===== */
 #current-year {
     display: inline-block;
     font-weight: 500;
@@ -65,7 +60,6 @@
     transform: scale(1.1);
 }
 
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
     .footer {
         padding: 1.5rem 1rem;
@@ -81,8 +75,7 @@
     }
 }
 
-/* ===== MAIN CONTENT ADJUSTMENT ===== */
-/* Ajoutez ceci à votre CSS global pour éviter que le contenu ne soit caché sous le footer */
+
 body {
-    padding-bottom: 80px; /* Ajustez cette valeur en fonction de la hauteur de votre footer */
+    padding-bottom: 80px;
 }

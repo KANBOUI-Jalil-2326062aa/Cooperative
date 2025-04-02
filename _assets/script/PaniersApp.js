@@ -1,19 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialisation des éléments UI
     const spinner = document.getElementById('loading-spinner');
     const grid = document.getElementById('paniers-grid');
     const errorMsg = document.getElementById('error-message');
 
-    // Chargement initial des données
     loadPaniers();
 
-    // Gestion du modal
     document.querySelector('.close').addEventListener('click', closeModal);
     document.getElementById('panierModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
 
-    // Fonction principale de chargement
     async function loadPaniers() {
         try {
             showLoadingState();
@@ -31,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const paniers = await response.json();
             renderPaniers(paniers);
 
-            // Stockage des données pour les détails
             window.paniersData = paniers;
 
         } catch (error) {
@@ -42,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Fonction de rendu des paniers
     function renderPaniers(paniers) {
         if (!paniers || paniers.length === 0) {
             grid.innerHTML = `
@@ -69,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `).join('');
 
-        // Ajout des écouteurs d'événements
         document.querySelectorAll('.panier-card').forEach(card => {
             card.addEventListener('click', function() {
                 const panierId = this.dataset.id;
@@ -79,22 +72,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Affichage des détails du panier
     function showPanierDetails(panier) {
         if (!panier) return;
 
-        // Remplissage des infos de base
         document.getElementById('modalTitle').textContent = `Panier ${panier.idPanier}`;
         document.getElementById('modalDate').textContent = formatDate(panier.dateRetrait);
         document.getElementById('modalLieu').textContent = panier.lieuRelais;
         document.getElementById('modalPrix').textContent = panier.prixTotal.toFixed(2);
 
-        // Gestion du statut
         const statusElement = document.getElementById('modalStatus');
         statusElement.textContent = panier.estValide ? 'Disponible' : 'Indisponible';
         statusElement.className = panier.estValide ? 'status-available' : 'status-unavailable';
 
-        // Remplissage des produits
         const produitsList = document.getElementById('modalProduits');
         produitsList.innerHTML = panier.produitPaniers.map(produit => `
             <li class="product-item">
@@ -105,11 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
             </li>
         `).join('');
 
-        // Affichage du modal
         document.getElementById('panierModal').style.display = 'block';
     }
 
-    // Fonctions utilitaires
     function formatDate(dateString) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('fr-FR', options);
@@ -128,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('panierModal').style.display = 'none';
     }
 
-    // Gestion des états UI
     function showLoadingState() {
         spinner.style.display = 'block';
         grid.style.display = 'none';

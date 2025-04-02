@@ -1,67 +1,83 @@
 <?php
-
 namespace modules\models\ClassObject;
 
-
-class Commandes {
-
+/**
+ * Class Commande
+ *
+ * Représente une commande.
+ */
+class Commande {
     private $id;
+    private $idPanier;
+    private $idUtilisateur;
 
-    private $panierId;
-
-    private $lieuRelai;
-
-    private $dateRetrait;
-
-    private $prixTotal;
-
-    public function __construct($id, $panierId, $lieuRelai, $dateRetrait, $prixTotal) {
+    /**
+     * Commande constructor.
+     *
+     * @param int $id
+     * @param int $idPanier
+     * @param int $idUtilisateur
+     */
+    public function __construct($id, $idPanier, $idUtilisateur) {
         $this->id = $id;
-        $this->panierId = $panierId;
-        $this->lieuRelai = $lieuRelai;
-        $this->dateRetrait = $dateRetrait;
-        $this->prixTotal = $prixTotal;
+        $this->idPanier = $idPanier;
+        $this->idUtilisateur = $idUtilisateur;
     }
 
+    /**
+     * Obtient l'ID de la commande.
+     *
+     * @return int
+     */
     public function getId() {
         return $this->id;
     }
 
-    public function getPanierId() {
-        return $this->panierId;
+    /**
+     * Obtient l'ID du panier.
+     *
+     * @return int
+     */
+    public function getIdPanier() {
+        return $this->idPanier;
     }
 
-    public function getLieuRelai() {
-        return $this->lieuRelai;
+    /**
+     * Obtient l'ID de l'utilisateur.
+     *
+     * @return int
+     */
+    public function getIdUtilisateur() {
+        return $this->idUtilisateur;
     }
 
-    public function getDateRetrait() {
-        return $this->dateRetrait;
-    }
-
-    public function getPrixTotal() {
-        return $this->prixTotal;
-    }
-
+    /**
+     * Définit l'ID de la commande.
+     *
+     * @param int $id
+     * @return void
+     */
     public function setId($id) {
         $this->id = $id;
     }
 
-    public function setPanierId($panierId) {
-        $this->panierId = $panierId;
+    /**
+     * Définit l'ID du panier.
+     *
+     * @param int $idPanier
+     * @return void
+     */
+    public function setIdPanier($idPanier) {
+        $this->idPanier = $idPanier;
     }
 
-    public function setLieuRelai($lieuRelai) {
-        $this->lieuRelai = $lieuRelai;
+    /**
+     * Définit l'ID de l'utilisateur.
+     *
+     * @param int $idUtilisateur
+     * @return void
+     */
+    public function setIdUtilisateur($idUtilisateur) {
+        $this->idUtilisateur = $idUtilisateur;
     }
-
-    public function setDateRetrait($dateRetrait) {
-        $this->dateRetrait = $dateRetrait;
-    }
-
-    public function setPrixTotal($prixTotal) {
-        $this->prixTotal = $prixTotal;
-    }
-
-
 }

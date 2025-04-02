@@ -8,7 +8,6 @@
     --border: #eaeaea;
 }
 
-/* ===== CARD STYLES ===== */
 .paniers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -89,7 +88,6 @@
     color: white;
 }
 
-/* ===== MODAL STYLES ===== */
 .modal {
     display: none;
     position: fixed;

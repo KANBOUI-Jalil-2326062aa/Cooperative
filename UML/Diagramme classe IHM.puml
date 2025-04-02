@@ -1,0 +1,149 @@
+@startuml
+
+namespace modules.controllers {
+    class CommandeController {
+        +execute() : void
+    }
+
+    class HomepageController {
+        +execute() : void
+    }
+
+    class LoginController {
+        +__construct() : void
+        +execute() : void
+    }
+
+    class PaniersController {
+        +__construct() : void
+        +execute() : void
+    }
+
+    class ProduitsController {
+        +__construct() : void
+        +execute() : void
+    }
+}
+
+namespace modules.views {
+    class CommandesView {
+        +__construct() : void
+        +show() : void
+    }
+
+    class HomepageView {
+        +__construct() : void
+        +show() : void
+    }
+
+    class LoginView {
+        +__construct() : void
+        +show() : void
+    }
+
+    class PaniersView {
+        +__construct() : void
+        +show() : void
+    }
+
+    class ProduitsView {
+        +__construct() : void
+        +show() : void
+    }
+
+    class Footer {
+        +__construct() : void
+    }
+
+    class Header {
+        +__construct() : void
+    }
+}
+
+namespace modules.models {
+    class LoginModel {
+        +__construct() : void
+        +authenticate(username, password) : User
+    }
+
+    class PaniersModel {
+        +__construct() : void
+    }
+
+    class ProduitsModel {
+        +__construct() : void
+    }
+
+    class CommandesModel {
+        +__construct() : void
+    }
+
+    namespace ClassObject {
+        class Commande {
+            +__construct(id, idPanier, idUtilisateur) : void
+            +getId() : int
+            +getIdPanier() : int
+            +getIdUtilisateur() : int
+            +setId(id) : void
+            +setIdPanier(idPanier) : void
+            +setIdUtilisateur(idUtilisateur) : void
+        }
+
+        class Paniers {
+            +__construct(id, date_retrait, lieu_relais, prix_total, liste_produits) : void
+            +getId() : int
+            +getDateRetrait() : string
+            +getLieuRelais() : string
+            +getPrixTotal() : float
+            +getListeProduits() : array
+            +setId(id) : void
+            +setDateRetrait(date_retrait) : void
+            +setLieuRelais(lieu_relais) : void
+            +setPrixTotal(prix_total) : void
+            +setListeProduits(liste_produits) : void
+        }
+
+        class Produits {
+            +__construct(id, nom, quantite, prix) : void
+            +getId() : int
+            +getNom() : string
+            +getQuantite() : int
+            +getPrix() : float
+            +setId(id) : void
+            +setNom(nom) : void
+            +setQuantite(quantite) : void
+            +setPrix(prix) : void
+        }
+    }
+}
+
+namespace _assets.includes {
+    class Database {
+        -pdo
+        -host : string
+        -db : string
+        -user : string
+        -pass : string
+        -instance : Database
+        -__construct() : void
+        +getInstance() : PDO
+    }
+}
+
+modules.models.LoginModel --> _assets.includes.Database : uses
+modules.models.PaniersModel --> _assets.includes.Database : uses
+modules.models.ProduitsModel --> _assets.includes.Database : uses
+modules.models.CommandesModel --> _assets.includes.Database : uses
+
+
+modules.controllers.CommandeController --> modules.views.CommandesView : uses
+modules.controllers.HomepageController --> modules.views.HomepageView : uses
+modules.controllers.LoginController --> modules.views.LoginView : uses
+modules.controllers.LoginController --> modules.models.LoginModel : uses
+modules.controllers.PaniersController --> modules.views.PaniersView : uses
+modules.controllers.PaniersController --> modules.models.PaniersModel : uses
+modules.controllers.ProduitsController --> modules.views.ProduitsView : uses
+modules.controllers.ProduitsController --> modules.models.ProduitsModel : uses
+modules.models.CommandesModel --> modules.models.ClassObject.Commande : uses
+
+@enduml
